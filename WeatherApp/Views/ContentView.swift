@@ -15,7 +15,7 @@ struct ContentView: View {
         VStack {
             if let location = locationManager.location {
                 if let weather = weather {
-                    Text("Weather data fetched!")
+                    WeatherView(weather: weather)
                 } else {
                     LoadingView()
                         .task {
@@ -41,10 +41,12 @@ struct ContentView: View {
 }
 
 
+let darkBlue = Color(hue: 0.656, saturation: 0.787, brightness: 0.354)
+
 struct BackgroundWrapper: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .background(Color(hue: 0.656, saturation: 0.787, brightness: 0.354))
+            .background(darkBlue)
             .preferredColorScheme(.dark)
     }
 }
